@@ -13,7 +13,7 @@
 
 #include <iostream>
 
-#include "parallel.h"
+//#include "parallel.h"
 #include "IMU.h"
 #include "MPU6050.h"
 
@@ -30,22 +30,11 @@ int main()
     MPU6050 accelgyro;
     
     IMU imu;
-    
-    
-    
-    
-    
-    
-    
+
     //Parallel parallel;
     //parallel.open();
     //parallel.start();
-    
-    
-    
-    
-    //usleep(10000000);
-    int i = 2000;
+
     
     while(true)
     {
@@ -55,10 +44,11 @@ int main()
         
         accelgyro.update();
         
-        cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
+        //cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
         
+        imu.update(accelgyro.get_ax(),accelgyro.get_ay(),accelgyro.get_az(),accelgyro.get_gx(),accelgyro.get_gy(),accelgyro.get_gz());
         
-        
+        //cout << imu.getPitch() << " " << imu.getRoll() << endl;
         
         
         //do the work
@@ -69,7 +59,7 @@ int main()
         //std::cout<<microcontroler_data.motor1<<" "<<microcontroler_data.motor2<<" "<<microcontroler_data.motor3<<" "<<microcontroler_data.motor4<<" "<<i<<std::endl;
         
         
-        //imu.update(microcontroler_data);
+        
         
         
 

@@ -73,6 +73,8 @@ class MPU6050 {
     private:
         uint8_t devAddr;
         uint8_t buffer[14];
+        
+        
         int16_t ax;
         int16_t ay;
         int16_t az;

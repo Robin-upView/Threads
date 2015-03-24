@@ -16,7 +16,7 @@ public:
     IMU(const IMU& orig);
     virtual ~IMU();
     
-    void update(Parallel::ParallelData sensorsData);
+    void update(int ax, int ay, int az, int gx, int gy, int gz);
     float getPitch(){return pitch;}
     float getRoll(){return roll;}
 
