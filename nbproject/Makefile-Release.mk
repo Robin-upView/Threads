@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/I2Cdev.o \
 	${OBJECTDIR}/IMU.o \
+	${OBJECTDIR}/MPU6050.o \
 	${OBJECTDIR}/parallel.o \
 	${OBJECTDIR}/welcome.o
 
@@ -64,10 +66,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/I2Cdev.o: I2Cdev.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2Cdev.o I2Cdev.cpp
+
 ${OBJECTDIR}/IMU.o: IMU.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IMU.o IMU.cpp
+
+${OBJECTDIR}/MPU6050.o: MPU6050.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
 
 ${OBJECTDIR}/parallel.o: parallel.cpp 
 	${MKDIR} -p ${OBJECTDIR}

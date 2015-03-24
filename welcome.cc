@@ -15,6 +15,9 @@
 
 #include "parallel.h"
 #include "IMU.h"
+#include "MPU6050.h"
+
+using namespace std;
 
 const int UPDATETIMEUS = 10000;
 const int MINSPARETIME = 2000;
@@ -24,13 +27,22 @@ void nanoWait(int secs, int nsecs);
 
 int main()
 {
-    
-    Parallel parallel;
-    parallel.open();
-    parallel.start();
-    
+    MPU6050 accelgyro;
     
     IMU imu;
+    
+    
+    
+    
+    
+    
+    
+    //Parallel parallel;
+    //parallel.open();
+    //parallel.start();
+    
+    
+    
     
     //usleep(10000000);
     int i = 2000;
@@ -41,32 +53,26 @@ int main()
         timeval loopStart;
         gettimeofday(&loopStart, NULL);
         
+        accelgyro.update();
         
-        
+        cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
         
         
         
         
         
         //do the work
-        Parallel::ParallelData microcontroler_data;
-        parallel.getParallelData(microcontroler_data);
+        //Parallel::ParallelData microcontroler_data;
+        //parallel.getParallelData(microcontroler_data);
         
         //std::cout<<microcontroler_data.gyroX<<" "<<microcontroler_data.gyroY<<" "<<microcontroler_data.gyroZ<<" "<<microcontroler_data.accelX<<" "<<microcontroler_data.accelY<<" "<<microcontroler_data.accelZ<<std::endl;
         //std::cout<<microcontroler_data.motor1<<" "<<microcontroler_data.motor2<<" "<<microcontroler_data.motor3<<" "<<microcontroler_data.motor4<<" "<<i<<std::endl;
         
         
-        imu.update(microcontroler_data);
+        //imu.update(microcontroler_data);
         
         
-        i++;
-        
-        parallel.sendMotors(i,i,i,i);
-        
-        if(i==2100)
-        {
-            i = 2000;
-        }
+
         
         
         
