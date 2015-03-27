@@ -9,14 +9,16 @@
         <group>
             <file>file:/Users/Robin/NetBeansProjects/Threads/I2Cdev.cpp</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/welcome.cc</file>
-            <file>file:/Users/Robin/NetBeansProjects/Threads/parallel.h</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/MPU6050.h</file>
-            <file>file:/Users/Robin/NetBeansProjects/Threads/IMU.cpp</file>
+            <file>file:/Users/Robin/NetBeansProjects/Threads/parallel.h</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/MPU6050.cpp</file>
+            <file>file:/Users/Robin/NetBeansProjects/Threads/IMU.cpp</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/IMU.h</file>
+            <file>file:/Users/Robin/NetBeansProjects/Threads/RC.h</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/parallel.cpp</file>
-            <file>file:/Users/Robin/NetBeansProjects/Threads/welcome.h</file>
             <file>file:/Users/Robin/NetBeansProjects/Threads/I2Cdev.h</file>
+            <file>file:/Users/Robin/NetBeansProjects/Threads/welcome.h</file>
+            <file>file:/Users/Robin/NetBeansProjects/Threads/RC.cpp</file>
         </group>
     </open-files>
 </project-private>

@@ -16,6 +16,7 @@
 //#include "parallel.h"
 #include "IMU.h"
 #include "MPU6050.h"
+#include "RC.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ void nanoWait(int secs, int nsecs);
 int main()
 {
     MPU6050 accelgyro;
+    RC rc;
     
     IMU imu;
 
@@ -43,12 +45,15 @@ int main()
         gettimeofday(&loopStart, NULL);
         
         accelgyro.update();
+        rc.update();
         
         //cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
         
         imu.update(accelgyro.get_ax(),accelgyro.get_ay(),accelgyro.get_az(),accelgyro.get_gx(),accelgyro.get_gy(),accelgyro.get_gz());
         
-        //cout << imu.getPitch() << " " << imu.getRoll() << endl;
+        //cout << imu.getPitch() << " " << imu.getRoll() << " ";
+        //cout << rc.get_rc0()<<" "<<rc.get_rc1()<<" "<<rc.get_rc2()<<" "<<rc.get_rc3()<<" "<<endl;
+        //cout << loopTimeUs_<<endl;
         
         
         //do the work

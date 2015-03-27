@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/I2Cdev.o \
 	${OBJECTDIR}/IMU.o \
 	${OBJECTDIR}/MPU6050.o \
+	${OBJECTDIR}/RC.o \
 	${OBJECTDIR}/parallel.o \
 	${OBJECTDIR}/welcome.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/MPU6050.o: MPU6050.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
+
+${OBJECTDIR}/RC.o: RC.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RC.o RC.cpp
 
 ${OBJECTDIR}/parallel.o: parallel.cpp 
 	${MKDIR} -p ${OBJECTDIR}

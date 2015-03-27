@@ -1,4 +1,5 @@
 #include "MPU6050.h"
+#include <iostream>
 
 /** Default constructor, uses default I2C address.
  * @see MPU6050_DEFAULT_ADDRESS
@@ -123,6 +124,8 @@ void MPU6050::getMotion6() {
     gx = (((int16_t)buffer[8]) << 8) | buffer[9];
     gy = (((int16_t)buffer[10]) << 8) | buffer[11];
     gz = (((int16_t)buffer[12]) << 8) | buffer[13];
+    
+    //std::cout<<(int)buffer[0]<<std::endl;
 }
 
 
