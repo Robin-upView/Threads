@@ -47,13 +47,24 @@ int main()
         accelgyro.update();
         rc.update();
         
-        //cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
-        
         imu.update(accelgyro.get_ax(),accelgyro.get_ay(),accelgyro.get_az(),accelgyro.get_gx(),accelgyro.get_gy(),accelgyro.get_gz());
         
-        //cout << imu.getPitch() << " " << imu.getRoll() << " ";
-        //cout << rc.get_rc0()<<" "<<rc.get_rc1()<<" "<<rc.get_rc2()<<" "<<rc.get_rc3()<<" "<<endl;
-        //cout << loopTimeUs_<<endl;
+        uint8_t buf[8];
+        buf[0] = (uint8_t)(rc.get_rc0()>>8) ;
+        buf[1] = (uint8_t)rc.get_rc0();
+        buf[2] = (uint8_t)(rc.get_rc1()>>8);
+        buf[3] = (uint8_t)rc.get_rc1();
+        buf[4] = (uint8_t)(rc.get_rc2()>>8);
+        buf[5] = (uint8_t)rc.get_rc2();
+        buf[6] = (uint8_t)(rc.get_rc3()>>8);
+        buf[7] = (uint8_t)rc.get_rc3();
+                
+        I2Cdev::writeBytes(0x29, 0x0B, 8, buf);
+        
+        //cout << accelgyro.get_ax()<<" "<<accelgyro.get_ay()<<" "<<accelgyro.get_az()<<" "<<accelgyro.get_gx()<<" "<<accelgyro.get_gy()<<" "<<accelgyro.get_gz()<<endl;
+        cout << imu.getPitch() << " " << imu.getRoll() << " ";
+        cout << rc.get_rc0()<<" "<<rc.get_rc1()<<" "<<rc.get_rc2()<<" "<<rc.get_rc3()<<" "<<endl;
+        cout << loopTimeUs_<<endl;
         
         
         //do the work
