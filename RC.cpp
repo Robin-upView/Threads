@@ -25,7 +25,7 @@ RC::RC() {
  */
 void RC::getRC() {
     
-    I2Cdev::readBytes(0x29, 0x00, 14, buffer);
+    I2Cdev::readBytes(devAddr, 0x00, 14, buffer);
     rc0 = (((int16_t)buffer[0]) << 8) | buffer[1];
     rc1 = (((int16_t)buffer[2]) << 8) | buffer[3];
     rc2 = (((int16_t)buffer[4]) << 8) | buffer[5];
