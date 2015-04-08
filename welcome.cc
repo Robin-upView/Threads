@@ -19,6 +19,17 @@
 #include "RC.h"
 #include "Motors.h"
 
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+#include "robin_control_law.h"
+
+
+#ifdef	__cplusplus
+}
+#endif
+
 using namespace std;
 
 const int UPDATETIMEUS = 10000;
@@ -51,9 +62,33 @@ int main()
         
         imu.update(accelgyro.get_ax(),accelgyro.get_ay(),accelgyro.get_az(),accelgyro.get_gx(),accelgyro.get_gy(),accelgyro.get_gz());
         
-        //control law here
         
-        motors.setMotors(rc.get_rc0(),rc.get_rc1(),rc.get_rc2(),rc.get_rc3());
+        //control law here
+        robin_control_law_U.rx[0]=rc.get_rc0();
+        robin_control_law_U.rx[1]=rc.get_rc1();
+        robin_control_law_U.rx[2]=rc.get_rc2();
+        robin_control_law_U.rx[3]=rc.get_rc3();
+        
+        robin_control_law_U.attitude[0]=imu.getPitch();
+        robin_control_law_U.attitude[1]=imu.getRoll();
+        
+        robin_control_law_step();
+        
+        cout<<robin_control_law_Y.log_h[0];
+                cout<<" ";
+        cout<<robin_control_law_Y.log_h[1];
+                cout<<" ";
+        cout<<robin_control_law_Y.log_h[2];
+                cout<<" ";
+        cout<<robin_control_law_Y.log_h[3];
+                cout<<" ";
+        cout<<robin_control_law_Y.log_h[4];
+                cout<<" ";
+        cout<<robin_control_law_Y.log_h[5];
+                cout<<endl;
+        
+        motors.setMotors(robin_control_law_Y.motors[0],robin_control_law_Y.motors[1],robin_control_law_Y.motors[2],robin_control_law_Y.motors[3]);
+        
         
 
         

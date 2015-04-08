@@ -43,8 +43,27 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <incDir>
+            <pElem>../Raspberry_pi_projects/control_law</pElem>
+          </incDir>
           <commandLine>-lpthread</commandLine>
         </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Raspberry_pi_projects/control_law"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../Raspberry_pi_projects/control_law"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libcontrol_law.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="I2Cdev.cpp" ex="false" tool="1" flavor2="0">
       </item>

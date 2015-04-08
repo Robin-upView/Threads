@@ -58,11 +58,13 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=../Raspberry_pi_projects/control_law/dist/Debug/GNU-Linux-x86/libcontrol_law.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads: ../Raspberry_pi_projects/control_law/dist/Debug/GNU-Linux-x86/libcontrol_law.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -71,40 +73,41 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/threads: ${OBJECTFILES}
 ${OBJECTDIR}/I2Cdev.o: I2Cdev.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2Cdev.o I2Cdev.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2Cdev.o I2Cdev.cpp
 
 ${OBJECTDIR}/IMU.o: IMU.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IMU.o IMU.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IMU.o IMU.cpp
 
 ${OBJECTDIR}/MPU6050.o: MPU6050.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
 
 ${OBJECTDIR}/Motors.o: Motors.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motors.o Motors.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Motors.o Motors.cpp
 
 ${OBJECTDIR}/RC.o: RC.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RC.o RC.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/RC.o RC.cpp
 
 ${OBJECTDIR}/parallel.o: parallel.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parallel.o parallel.cpp
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parallel.o parallel.cpp
 
 ${OBJECTDIR}/welcome.o: welcome.cc 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/welcome.o welcome.cc
+	$(COMPILE.cc) -g -I../Raspberry_pi_projects/control_law -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/welcome.o welcome.cc
 
 # Subprojects
 .build-subprojects:
+	cd ../Raspberry_pi_projects/control_law && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -113,6 +116,7 @@ ${OBJECTDIR}/welcome.o: welcome.cc
 
 # Subprojects
 .clean-subprojects:
+	cd ../Raspberry_pi_projects/control_law && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
